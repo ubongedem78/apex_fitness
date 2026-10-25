@@ -1,0 +1,60 @@
+{
+  "name": "apexfitness-server",
+  "version": "1.0.0",
+  "license": "ISC",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest --forceExit --detectOpenHandles",
+    "test:coverage": "jest --coverage --forceExit --detectOpenHandles",
+    "migrate": "node src/scripts/migrate.js",
+    "migrate:alter": "node src/scripts/migrate-alter.js",
+    "migrate:token-version": "node src/scripts/add-token-version.js",
+    "migrate:indexes": "node src/scripts/add-indexes.js",
+    "migrate:notif-enum": "node src/scripts/add-notification-enum-values.js",
+    "migrate:joining-fee": "node src/scripts/add-joining-fee-column.js",
+    "audit:payments": "node src/scripts/audit-payments.js",
+    "create-weekend-plan": "node src/scripts/create-weekend-plan.js",
+    "migrate:normalize-emails": "node src/scripts/normalize-emails.js",
+    "migrate:normalize-phones": "node src/scripts/normalize-phones.js",
+    "update-pricing": "node src/scripts/update-pricing.js",
+    "setup-db": "node src/scripts/setup-database.js",
+    "create-locker-plans": "node src/scripts/create-locker-plans.js",
+    "seed": "node src/scripts/seed.js",
+    "lint": "node --check index.js && node --check src/**/*.js"
+  },
+  "dependencies": {
+    "axios": "^1.15.1",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.2",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "nodemailer": "^9.0.3",
+    "pg": "^8.20.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.8",
+    "zod": "^4.3.6"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.10",
+    "supertest": "^7.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ],
+    "setupFiles": [
+      "./tests/setup.js"
+    ]
+  }
+}

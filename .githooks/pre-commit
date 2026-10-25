@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+STAGED=$(git diff --cached --name-only --diff-filter=ACMR)
+
+CLIENT_CHANGED=$(echo "$STAGED" | grep -c "^client/" 2>/dev/null || true)
+
+if [ "$CLIENT_CHANGED" -gt 0 ]; then
+  echo "Linting client..."
+  (cd client && npm run lint --silent)
+  echo "Lint passed"
+fi
+
+exit 0
